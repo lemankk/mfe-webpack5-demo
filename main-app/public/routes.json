@@ -1,0 +1,18 @@
+[
+    {
+        "path": "/",
+        "exact": true,
+        "external": {
+            "name": "@mfe-subapp/home",
+            "entry": "http://localhost:3001/"
+        }
+    },
+    {
+        "path": "/accounts/balance",
+        "exact": false,
+        "external": {
+            "name": "@mfe-subapp/account-balance",
+            "entry": "http://localhost:3002/"
+        }
+    }
+]
