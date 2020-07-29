@@ -5,12 +5,12 @@ const { ModuleFederationPlugin } = webpack.container;
 const path = require("path");
 
 const paths = require("./config/paths");
-const modules = require("./config/modules");
-const getClientEnvironment = require("./config/env");
+// const modules = require("./config/modules");
+// const getClientEnvironment = require("./config/env");
 
 const postcssNormalize = require("postcss-normalize");
 
-const appPackageJson = require(paths.appPackageJson);
+const appPackageJson = require("./package.json");
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
@@ -38,7 +38,7 @@ module.exports = function (webpackEnv) {
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
-  const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
+  // const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
   return {
     entry: "./src/index",
     mode: "development",
@@ -86,7 +86,7 @@ module.exports = function (webpackEnv) {
         name: "mfe_mainapp",
         shared: Object.keys(appPackageJson.dependencies),
       }),
-      new webpack.DefinePlugin(env.stringified),
+      new webpack.DefinePlugin(""),
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),
