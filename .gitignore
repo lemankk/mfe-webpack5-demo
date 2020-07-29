@@ -1,0 +1,8 @@
+node_modules
+.git
+lib
+dist
+build
+yarn.lock
+*.log
+*.tgz
